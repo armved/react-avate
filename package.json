@@ -1,0 +1,23 @@
+{
+  "name": "react-avate",
+  "version": "1.0.0",
+  "description": "React boilerplate ruled by modern standarts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvoJFB/react-avate.git"
+  },
+  "keywords": [
+    "react",
+    "boilerplate"
+  ],
+  "author": "avojfb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AvoJFB/react-avate/issues"
+  },
+  "homepage": "https://github.com/AvoJFB/react-avate#readme"
+}
