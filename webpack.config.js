@@ -1,4 +1,4 @@
-const path = require('webpack');
+const path = require('path');
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
