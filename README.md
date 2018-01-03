@@ -1,5 +1,3 @@
-# React-Avate
+# React-Avate - Boilerplate ruled by modern standarts
 
-## React boilerplate ruled by modern standarts
-
-### In Progress...
+## In Progress...
