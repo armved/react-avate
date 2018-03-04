@@ -13,7 +13,10 @@
     "type": "git",
     "url": "git+https://github.com/AvoJFB/react-avate.git"
   },
-  "keywords": ["react", "boilerplate"],
+  "keywords": [
+    "react",
+    "boilerplate"
+  ],
   "author": "avojfb",
   "license": "ISC",
   "bugs": {
@@ -44,6 +47,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
