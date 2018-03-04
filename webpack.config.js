@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('dotenv').config();
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
@@ -18,6 +19,7 @@ module.exports = {
     path: PATHS.DIST,
     filename: 'app.bundle.js',
   },
+  mode: process.env.ENV === 'DEV' ? 'development' : 'production',
   module: {
     rules: [
       {
