@@ -4,19 +4,16 @@
   "description": "React boilerplate ruled by modern standarts",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --hot",
-    "build": "./node_modules/.bin/webpack",
-    "flow": "./node_modules/.bin/flow",
-    "gen": "./node_modules/.bin/plop --plopfile ./internals/generators/index.js"
+    "start": "webpack-dev-server --hot",
+    "build": "webpack",
+    "flow": "flow",
+    "gen": "plop --plopfile ./internals/generators/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AvoJFB/react-avate.git"
   },
-  "keywords": [
-    "react",
-    "boilerplate"
-  ],
+  "keywords": ["react", "boilerplate"],
   "author": "avojfb",
   "license": "ISC",
   "bugs": {
