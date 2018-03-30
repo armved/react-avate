@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const production = require('./webpack.config.prod');
 const development = require('./webpack.config.dev');
@@ -14,30 +15,27 @@ const cleanOptions = {
   verbose: true,
   dry: false,
 };
+
 const common = {
   entry: PATHS.APP,
   output: {
     path: PATHS.DIST,
     filename: 'app.bundle.[hash].js',
-    chunkFilename: '[name].[chunkhash].js',
   },
   resolve: {
     modules: ['node_modules', PATHS.SRC],
     extensions: ['.js', '.jsx', '.json', '.css'],
   },
-  plugins: [new webpack.NamedModulesPlugin(), new CleanWebpackPlugin(pathsToClean, cleanOptions)],
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new CleanWebpackPlugin(pathsToClean, cleanOptions),
+  ],
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-      },
-      {
-        test: /\.css$/,
-        include: [PATHS.SRC],
-        exclude: /node_modules/,
-        loader: 'style-loader!css-loader',
       },
     ],
   },

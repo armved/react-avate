@@ -36,8 +36,8 @@ module.exports = {
       },
       {
         type: 'add',
-        path: '../../src/components/{{ properCase name }}/styles.css',
-        templateFile: './component/templates/styles.css',
+        path: '../../src/components/{{ properCase name }}/styles.less',
+        templateFile: './component/templates/styles.less',
       },
     ];
   },

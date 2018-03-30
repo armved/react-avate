@@ -1,5 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+/* eslint-enable */
+
 const PATHS = require('./PATHS');
 
 exports.setMode = mode => ({
@@ -29,4 +32,19 @@ exports.buildSetup = env => ({
           },
     }),
   ],
+});
+
+exports.extractLess = new ExtractTextPlugin({
+  filename: 'style.[hash].css',
+});
+
+exports.styleLoader = options => ({
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: options.use,
+      },
+    ],
+  },
 });
