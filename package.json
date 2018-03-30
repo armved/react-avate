@@ -4,10 +4,10 @@
   "description": "React boilerplate ruled by modern standarts",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "webpack",
-    "flow": "flow",
-    "gen": "plop --plopfile ./internals/generators/index.js"
+    "start": "./node_modules/.bin/webpack-dev-server --hot",
+    "build": "./node_modules/.bin/webpack --config webpack/webpack.config.js",
+    "flow": "./node_modules/.bin/flow",
+    "gen": "./node_modules/.bin/plop --plopfile ./internals/generators/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
@@ -43,7 +44,8 @@
     "style-loader": "^0.20.2",
     "webpack": "^4.1.0",
     "webpack-cli": "^2.0.10",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-server": "^3.1.0",
+    "webpack-merge": "^4.1.2"
   },
   "dependencies": {
     "dotenv": "^5.0.1",
