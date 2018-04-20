@@ -7,6 +7,7 @@
   * Configured ESlint (Prettier).
   * HMR (Hot module replacemant).
   * Code spliting.
+  * Assets loading.
 
 ### Usage
 
@@ -25,10 +26,13 @@ yarn install
 ```
 #### Change React-Avate to your project name in .env and package.json.
 
+### If you are using assets (photos, fonts, etc.) you can load them easily. First add it in assets folder then import it in assets/index.js
+
 #### Making new component or reducer:
  ```bash
 yarn gen
 ```
+#### If you are generating reducer don't forget add it in rootReducer.
 
 #### Dev server:
 Webpack dev server starts in 8080 port (Check .env file for ENV=DEV)

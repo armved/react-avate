@@ -6,7 +6,7 @@ const development = require('./webpack.config.dev');
 const PATHS = require('./PATHS');
 require('dotenv').config();
 
-const { ANALYZE, ENV } = process.env;
+const { ENV } = process.env;
 const pathsToClean = ['dist'];
 
 const cleanOptions = {
@@ -24,11 +24,9 @@ const common = {
   },
   resolve: {
     modules: ['node_modules', PATHS.SRC],
-    extensions: ['.js', '.jsx', '.json', '.css'],
+    extensions: ['.js', '.jsx', '.json', '.less'],
   },
-  plugins: [
-    new CleanWebpackPlugin(pathsToClean, cleanOptions),
-  ],
+  plugins: [new CleanWebpackPlugin(pathsToClean, cleanOptions)],
   optimization: {
     namedModules: true,
     splitChunks: {
@@ -58,6 +56,32 @@ const common = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+              name: 'assets/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico|svg)$/,
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              publicPath: 'assets/',
+              outputPath: 'assets/',
+            },
+          },
+        ],
       },
     ],
   },
