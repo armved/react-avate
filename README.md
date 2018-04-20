@@ -26,7 +26,7 @@ yarn install
 ```
 #### Change React-Avate to your project name in .env and package.json.
 
-### If you are using assets (photos, fonts, etc.) you can load them easily. First add it in assets folder then import it in assets/index.js
+#### If you are using assets (photos, fonts, etc.) you can load them easily. First add it in assets folder then import it in assets/index.js
 
 #### Making new component or reducer:
  ```bash
