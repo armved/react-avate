@@ -23,7 +23,7 @@ or
  ```bash
 yarn install
 ```
-#### Change React-Avate to your project name in webpack/template.html and package.json.
+#### Change React-Avate to your project name in .env and package.json.
 
 #### Making new component or reducer:
  ```bash

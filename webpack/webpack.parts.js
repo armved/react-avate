@@ -2,6 +2,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 /* eslint-enable */
+require('dotenv').config();
+
+const { TITLE } = process.env;
 
 const PATHS = require('./PATHS');
 
@@ -18,6 +21,7 @@ exports.buildSetup = env => ({
     new HtmlWebpackPlugin({
       template: PATHS.TEMPLATE,
       filename: 'index.html',
+      title: TITLE,
       inject: 'body',
       minify:
         env === 'development'
@@ -26,9 +30,15 @@ exports.buildSetup = env => ({
             removeAttributeQuotes: true,
             collapseWhitespace: true,
             html5: true,
-            minifyCSS: true,
             removeComments: true,
             removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
           },
     }),
   ],
