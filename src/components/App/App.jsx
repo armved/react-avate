@@ -3,7 +3,7 @@ import './AppStyles.less';
 
 const App = () => (
   <div className="App">
-    App Component
+    <h1 className="title">React-avate</h1>
   </div>
 );
 
