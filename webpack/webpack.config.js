@@ -1,5 +1,4 @@
 const merge = require('webpack-merge');
-const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const production = require('./webpack.config.prod');
@@ -7,6 +6,7 @@ const development = require('./webpack.config.dev');
 const PATHS = require('./PATHS');
 require('dotenv').config();
 
+const { ENV } = process.env;
 const pathsToClean = ['dist'];
 
 const cleanOptions = {
@@ -24,25 +24,27 @@ const common = {
   },
   resolve: {
     modules: ['node_modules', PATHS.SRC],
-    extensions: ['.js', '.jsx', '.json', '.css'],
+    extensions: ['.js', '.jsx', '.json', '.less'],
   },
-  plugins: [new webpack.NamedModulesPlugin(), new CleanWebpackPlugin(pathsToClean, cleanOptions)],
+  plugins: [new CleanWebpackPlugin(pathsToClean, cleanOptions)],
   optimization: {
+    namedModules: true,
     splitChunks: {
       cacheGroups: {
         default: false,
         react: {
           test: /react/,
           name: 'react',
-          chunks: 'initial',
           minSize: 1,
+          chunks: 'initial',
           reuseExistingChunk: true,
         },
         vendor: {
           test: /node_modules\/(?!react)/,
           name: 'vendor',
-          chunks: 'initial',
+          minChunks: 2,
           minSize: 1,
+          chunks: 'initial',
           reuseExistingChunk: true,
         },
       },
@@ -55,10 +57,37 @@ const common = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+              name: 'assets/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico|svg)$/,
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              publicPath: 'assets/',
+              outputPath: 'assets/',
+            },
+          },
+        ],
+      },
     ],
   },
 };
+
 module.exports = () => {
-  const config = merge(common, process.env.ENV === 'DEV' ? development : production);
+  const config = merge(common, ENV === 'DEV' ? development : production);
   return config;
 };
