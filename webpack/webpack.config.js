@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const production = require('./webpack.config.prod');
 const development = require('./webpack.config.dev');
 const PATHS = require('./PATHS');
@@ -26,7 +27,10 @@ const common = {
     modules: ['node_modules', PATHS.SRC],
     extensions: ['.js', '.jsx', '.json', '.less'],
   },
-  plugins: [new CleanWebpackPlugin(pathsToClean, cleanOptions)],
+  plugins: [
+    new CopyWebpackPlugin([{ from: 'src/assets/*', to: 'assets/', flatten: true }]),
+    new CleanWebpackPlugin(pathsToClean, cleanOptions),
+  ],
   optimization: {
     namedModules: true,
     splitChunks: {
@@ -65,20 +69,6 @@ const common = {
             options: {
               limit: 100000,
               name: 'assets/[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpe?g|png|gif|ico|svg)$/,
-        exclude: /(node_modules)/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              publicPath: 'assets/',
-              outputPath: 'assets/',
             },
           },
         ],
